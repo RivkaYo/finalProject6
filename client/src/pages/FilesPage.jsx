@@ -1,14 +1,14 @@
 import React from "react";
 import File from "../components/File";
 
-const Files = () => {
+const FilesPage = () => {
   return (
     <div>
-      <h1>This is the files page</h1>
+      <h1>This is the filesPage page</h1>
       <br />
       <File />
     </div>
   );
 };
 
-export default Files;
+export default FilesPage;

@@ -7,10 +7,12 @@ import FoldersPage from "./pages/FoldersPage";
 import LayoutPage from "./pages/LayoutPage";
 import NoPage from "./pages/NoPage";
 import Folder from "./components/Folder";
+import FilesPage from "./pages/FilesPage";
 import File from "./components/File";
 
 function App() {
   const [username, setUsername] = useState("");
+  const [currFolder, seCurrFolder] = useState("");
 
   return (
     <div>
@@ -23,16 +25,12 @@ function App() {
                 <LoginPage setUsername={setUsername} username={username} />
               }
             />
-            <Route
-              path=":username"
-              element={<FoldersPage />}
-            >
-              {/* <Route
-                path={`${folderId}`}
-                element={<Folder folder={folderId} />}
-              >
-                <Route path={`${fileId}`} element={<File />} />
-              </Route> */}
+            <Route path=":username" element={<FoldersPage />}>
+              {
+                <Route path={":folderName"} element={<FilesPage />}>
+                  {/* <Route path={`${fileId}`} element={<File />} /> */}
+                </Route>
+              }
             </Route>
             <Route path="*" element={<NoPage />} />
           </Route>
