@@ -2,16 +2,13 @@
     "users": [ 
         {
             "userId": 1,
-            "username": "Tzofia",
-            "password": 123456
+            "username": "tzofia",
+            "password": 123456,
+            "folders": []
         }, {
             "userId": 2,
-            "username": "Rivka",
-            "password": 123456
-        }, {
-            "userId": 3,
-            "username": "Shlomo",
-            "password": 123456
+            "username": "rivka",
+            "password": 123456,
+            "folders": []
         }]
-
 }
