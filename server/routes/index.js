@@ -8,7 +8,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.post("/login", function (req, res) {
+router.post("/login", (req, res) => {
   console.log("I am in the log in validation");
 
   // Read the users from the database
@@ -25,8 +25,6 @@ router.post("/login", function (req, res) {
         if (arr[i].username === req.body.username) {
           // If password matches, log the user in
           if (arr[i].password === req.body.password) {
-            console.log("arr[i]: ", arr[i]);
-            console.log("arr: ", arr);
             console.log("Logged in successfully");
             return res
               .status(200)
