@@ -12,64 +12,6 @@
             "userId": 3,
             "username": "Shlomo",
             "password": 123456
-        }],
+        }]
 
-    "folders": [ 
-        {
-            "folderId": 1,
-            "username": "Tzofia",
-            "folderName": "Tzofia's first folder"
-        }, {
-            "folderId": 2,
-            "username": "Tzofia",
-            "folderName": "Tzofia's second folder"
-        }, {
-            "folderId": 3,
-            "username": "Rivka",
-            "folderName": "Rivka's third folder"
-        }],
-
-    "files": [ 
-        {
-            "fileId": 1,
-            "folderId": 1,
-            "fileName": "Tzofia's firstFile in the first folder"
-        }, {
-            "fileId": 2,
-            "folderId": 1,
-            "fileName": "Tzofia's secondFile in the first folder"
-        }, {
-            "fileId": 3,
-            "folderId": 1,
-            "fileName": "Tzofia's thirdFile in the first folder"
-        }, {
-            "fileId": 4,
-            "folderId": 2,
-            "fileName": "Tzofia's fourthFile in the second folder"
-        }, {
-            "fileId": 5,
-            "folderId": 2,
-            "fileName": "Tzofia's fifthFile in the second folder"
-        }, {
-            "fileId": 6,
-            "folderId": 3,
-            "fileName": "Rivka's first File in the first folder"
-        }, {
-            "fileId": 7,
-            "folderId": 3,
-            "fileName": "Rivka's second file in the first folder"
-        }, {
-            "fileId": 8,
-            "folderId": 3,
-            "fileName": "Rivka's third File in the first folder"
-        }, {
-            "fileId": 9,
-            "folderId": 3,
-            "fileName": "Rivka's fourth File in the first folder"
-        }, {
-            "fileId": 10,
-            "folderId": 3,
-            "fileName": "Rivka's fifth File in the first folder"
-        }
-    ]
 }
