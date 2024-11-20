@@ -62,4 +62,15 @@ router.post("/login", function (req, res) {
   });
 });
 
+router.get("/:username",function(req,res){
+  let username= req.params.username;
+  console.log('username: ', username);
+  fs.readdir(`./public/files/${username}`,(error,data)=>{
+    if(error){
+      console.log('error: ', error);
+      throw error
+      }else res.send(data)
+  })
+})
+
 module.exports = router;
