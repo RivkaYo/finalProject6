@@ -7,7 +7,7 @@ import FoldersPage from "./pages/FoldersPage";
 import LayoutPage from "./pages/LayoutPage";
 import NoPage from "./pages/NoPage";
 import Folder from "./components/Folder";
-import Files from "./pages/Files";
+import FilesPage from "./pages/FilesPage";
 import File from "./components/File";
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
             />
             <Route path=":username" element={<FoldersPage />}>
               {
-                <Route path={":folderName"} element={<Files />}>
-                  // {/* <Route path={`${fileId}`} element={<File />} /> */}
+                <Route path={":folderName"} element={<FilesPage />}>
+                  {/* <Route path={`${fileId}`} element={<File />} /> */}
                 </Route>
               }
             </Route>

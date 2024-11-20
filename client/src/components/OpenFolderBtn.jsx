@@ -5,7 +5,7 @@ const OpenFolderBtn = ({ folderName }) => {
   const navigate = useNavigate();
   function handleOpenFolder() {
     alert(`entered handle open folder btn from ${folderName}`);
-    navigate(Files.jsx);
+    navigate(FilesPage);
   }
   return (
     <div>
