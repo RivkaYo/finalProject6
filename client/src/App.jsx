@@ -4,6 +4,7 @@ import React, { useState } from "react";
 function App({ setCurrentUser, currentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user,setUser]= useState("");
 
   function handleLogin(event) {
     event.preventDefault();
@@ -20,6 +21,13 @@ function App({ setCurrentUser, currentUser }) {
     fetch("http://localhost:3000/login", objOptions)
     .then(async (res)=>{
      const message = await res.json();
+     let userc=message.user
+     setUser(message.user);
+     console.log(userc);
+     console.log('res.status==200: ', res.status==200);
+     if(res.status==200){
+      
+     }
      alert(message.message);
 
     })
