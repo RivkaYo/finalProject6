@@ -12,6 +12,7 @@ const LoginPage = ({ setUsername, username }) => {
       },
       body: JSON.stringify({ username: username, password: password }),
     };
+    
 
     const res = await fetch("http://localhost:3000/login", objOptions);
     console.log("res: ", res);

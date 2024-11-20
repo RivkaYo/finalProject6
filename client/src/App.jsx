@@ -22,7 +22,7 @@ function App() {
               }
             />
             <Route
-              path="username"
+              path=":username"
               element={<FoldersPage username={username} />}
             />
             <Route path="*" element={<NoPage />} />
