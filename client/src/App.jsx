@@ -25,6 +25,7 @@ function App() {
                 <LoginPage setUsername={setUsername} username={username} />
               }
             />
+            {/* <Route path=":folderName" element={<FilesPage />}></Route> */}
             <Route path=":username" element={<FoldersPage />}>
               <Route path=":folderName" element={<FilesPage />}>
                 {/* <Route path={`${fileId}`} element={<File />} /> */}

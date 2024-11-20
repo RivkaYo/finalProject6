@@ -1,8 +1,10 @@
 import React from "react";
 import File from "../components/File";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const FilesPage = () => {
-
+console.log("hi");
   const [datal, setData] = useState([]);
   let files = [];
   const { username } = useParams();
