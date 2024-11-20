@@ -29,6 +29,7 @@ function App() {
             <Route path=":username" element={<FoldersPage />}>
               <Route path=":folderName" element={<FilesPage />}>
                 {/* <Route path={`${fileId}`} element={<File />} /> */}
+                 <Route path=":filename" element={<FilesPage />}> </Route>
               </Route>
             </Route>
             <Route path="*" element={<NoPage />} />

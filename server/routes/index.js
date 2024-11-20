@@ -87,5 +87,20 @@ router.get("/:username/:foldername",function(req,res){
   })
 })
 
+router.get("/:username/:foldername/:filename",function(req,res){
+  let username= req.params.username;
+  console.log('username: ', username);
+  let foldername= req.params.foldername;
+  console.log('foldername: ', foldername);
+  let filename= req.params.filename;
+  console.log('filename: ', filename);
+  fs.readFile(`./public/files/${username}/${foldername}/${filename}`,(error,data)=>{
+    if(error){
+      console.log('error: ', error);
+      throw error
+      }else res.send(data)
+  })
+})
+
 
 module.exports = router;
