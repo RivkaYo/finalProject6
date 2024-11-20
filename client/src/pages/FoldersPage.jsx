@@ -1,10 +1,10 @@
 import React from "react";
 
-const FoldersPage = () => {
+const FoldersPage = ({ username }) => {
   return (
     <div>
       <h2>This is the Folders page</h2>
-      <h2>hi ${username}</h2>
+      <h2>hi {username}</h2>
     </div>
   );
 };

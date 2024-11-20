@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = ({ setUsername, username }) => {
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -20,7 +22,9 @@ const LoginPage = ({ setUsername, username }) => {
 
     console.log("user.message: ", user.message);
     if (res.ok) {
-      setUsername(user.user.username);
+      const newUsername = user.user.username;
+      setUsername(newUsername);
+      navigate(newUsername);
     }
   }
 
