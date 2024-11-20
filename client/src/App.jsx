@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import FoldersPage from "./pages/FoldersPage";
@@ -8,7 +9,6 @@ import NoPage from "./pages/NoPage";
 
 function App() {
   const [username, setUsername] = useState("");
-  console.log("username: ", username);
 
   return (
     <div>
@@ -22,7 +22,7 @@ function App() {
               }
             />
             <Route
-              path=":username"
+              path="username"
               element={<FoldersPage username={username} />}
             />
             <Route path="*" element={<NoPage />} />
