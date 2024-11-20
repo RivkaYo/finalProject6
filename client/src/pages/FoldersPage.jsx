@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
+import Folder from "../components/Folder";
 
 const FoldersPage = () => {
   const [datal,setData]= useState([])
@@ -29,17 +30,21 @@ const FoldersPage = () => {
   function showf(){
     let arr=[]
     for(let i=0;i<datal.length;i++){
-      arr.push(<div id={datal[i]} style={{backgroundColor:"whitesmoke",width:"110px",height:"100px", margin:"5px",padding:"3px"}}>{datal[i]}</div>)
+      arr.push( <Folder name={datal[i]}/>)
     }
     return arr;
   }
   
 
 
+
   return (
     <div>
       <h2>This is the Folders page</h2>
       <h2>hi {username}</h2>
+      <br />
+      {/* some sort of for loop that gets frim server the folders and creates a folder component for each */}
+      {/* <Folder /> */}
       {showf()}
     </div>
   );
