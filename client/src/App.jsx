@@ -27,10 +27,7 @@ function App() {
             />
             <Route path=":username" element={<FoldersPage />}>
               {
-                <Route
-                  path={`${folderName}`}
-                  element={<Files folder={folderName} />}
-                >
+                <Route path={":folderName"} element={<Files />}>
                   // {/* <Route path={`${fileId}`} element={<File />} /> */}
                 </Route>
               }
