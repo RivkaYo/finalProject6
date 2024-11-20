@@ -8,8 +8,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-
-router.post('/login', function (req, res) {
+router.post("/login", function (req, res) {
   // Read the users from the database
   fs.readFile("./public/database/db.json", "utf8", function (error, data) {
     if (error) {
@@ -23,8 +22,6 @@ router.post('/login', function (req, res) {
         if (arr[i].username === req.body.username) {
           // If password matches, log the user in
           if (arr[i].password === req.body.password) {
-            console.log("arr[i]: ", arr[i]);
-            console.log("arr: ", arr);
             console.log("Logged in successfully");
             return res
               .status(200)

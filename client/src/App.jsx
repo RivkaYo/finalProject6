@@ -1,4 +1,4 @@
-import './App.css'
+import "./App.css";
 import React, { useState } from "react";
 
 function App({ setCurrentUser, currentUser }) {
@@ -6,17 +6,16 @@ function App({ setCurrentUser, currentUser }) {
   const [password, setPassword] = useState("");
   const [user,setUser]= useState("");
 
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault();
-    console.log("here")
+    console.log("here");
     const objOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "username": username, "password": password})
-    }
-    // alert("entered handle login function");
+      body: JSON.stringify({ username: username, password: password }),
+    };
 
     fetch("http://localhost:3000/login", objOptions)
     .then(async (res)=>{
@@ -34,6 +33,8 @@ function App({ setCurrentUser, currentUser }) {
     .catch((error)=>{
       console.log("error: ",error);
     })
+    const res = await fetch("http://localhost:3000/login", objOptions);
+    const user = await res.json();
   }
 
   return (
@@ -67,12 +68,16 @@ function App({ setCurrentUser, currentUser }) {
         />
         <br></br>
         <br></br>
-        <button onClick={(event)=>{handleLogin(event)}}>Log In</button>
+        <button
+          onClick={(event) => {
+            handleLogin(event);
+          }}
+        >
+          Log In
+        </button>
       </form>
     </div>
   );
 }
 
-export default App
-
-
+export default App;
