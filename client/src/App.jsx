@@ -5,17 +5,27 @@ function App({ setCurrentUser, currentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin() {
+  function handleLogin(event) {
+    event.preventDefault();
+    console.log("here")
     const objOptions = {
-      mathod: "POST",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ "username": username, "password": password})
     }
-    alert("entered handle login function");
+    // alert("entered handle login function");
 
-    fetch("http://localhost:3000/", objOptions)
+    fetch("http://localhost:3000/login", objOptions)
+    .then(async (res)=>{
+     const message = await res.json();
+     alert(message.message);
+
+    })
+    .catch((error)=>{
+      console.log("error: ",error);
+    })
   }
 
   return (
@@ -49,7 +59,7 @@ function App({ setCurrentUser, currentUser }) {
         />
         <br></br>
         <br></br>
-        <button onClick={handleLogin}>Log In</button>
+        <button onClick={(event)=>{handleLogin(event)}}>Log In</button>
       </form>
     </div>
   );

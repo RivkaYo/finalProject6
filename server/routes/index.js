@@ -10,9 +10,7 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.post('/logIn', function (req, res) {
-  console.log("I am in the log in validation");
-  
+router.post('/login', function (req, res) {
   // Read the users from the database
   fs.readFile('./public/database/db.json', 'utf8', function (error, data) {
     if (error) {
@@ -21,7 +19,6 @@ router.post('/logIn', function (req, res) {
     } else {
       let allusers = JSON.parse(data);
       let arr = allusers.users;
-
       // Check if the user exists
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].username === req.body.username) {
@@ -60,6 +57,8 @@ router.post('/logIn', function (req, res) {
     }
   });
 });
+
+
 
 
 
