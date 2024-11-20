@@ -26,12 +26,12 @@ function App() {
               path={`${username}`}
               element={<FoldersPage username={username} />}
             >
-              <Route
+              {/* <Route
                 path={`${folderId}`}
                 element={<Folder folder={folderId} />}
               >
                 <Route path={`${fileId}`} element={<File />} />
-              </Route>
+              </Route> */}
             </Route>
             <Route path="*" element={<NoPage />} />
           </Route>
