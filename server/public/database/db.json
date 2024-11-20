@@ -1,14 +1,1 @@
-{
-  "users": [
-    {
-      "userId": 1,
-      "username": "tzofia",
-      "password": "123456"
-    },
-    {
-      "userId": 2,
-      "username": "rivka",
-      "password": "123456"
-    }
-  ]
-}
+{"users":[{"userId":1,"username":"tzofia","password":"123456"},{"userId":2,"username":"rivka","password":"123456"},{"userId":3,"username":"","password":""}]}

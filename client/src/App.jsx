@@ -5,9 +5,9 @@ function App({ setCurrentUser, currentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault();
-    console.log("here")
+    console.log("here");
     const objOptions = {
       method: "POST",
       headers: {
@@ -51,7 +51,13 @@ function App({ setCurrentUser, currentUser }) {
         />
         <br></br>
         <br></br>
-        <button onClick={(event)=>{handleLogin(event)}}>Log In</button>
+        <button
+          onClick={(event) => {
+            handleLogin(event);
+          }}
+        >
+          Log In
+        </button>
       </form>
     </div>
   );
