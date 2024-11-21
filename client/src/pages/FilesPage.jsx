@@ -11,6 +11,7 @@ const FilesPage = () => {
   const { username } = useParams();
   const { folderName } = useParams();
   console.log("folderName: ", folderName);
+  const [cen,setCen]= useState();
 
   useEffect(() => {
     const objOptions = {
@@ -28,12 +29,12 @@ const FilesPage = () => {
         files = data;
         setData(data);
       });
-  }, []);
+  }, [cen]);
 
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<File key={i} name={datal[i]} />);
+      arr.push(<File key={i} cen={cen} setCen={setCen} name={datal[i]} />);
     }
     console.log("arr: ", arr);
     return arr;

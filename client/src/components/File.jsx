@@ -18,7 +18,7 @@ const File = (props) => {
         <br />
         <OpenFolderBtn folderName={props.name}  />
         <RenameFB changename={props.changename} setChangename={props.setChangename} username={props.username} filename={props.name}/>
-        <DeleteBtn />
+        <DeleteBtn cen={props.cen} setCen={props.setCen} filename={props.name}/>
       </div>
     </div>
   );
