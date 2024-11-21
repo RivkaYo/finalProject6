@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import File from "../components/File";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const FilesPage = () => {
-  const { username, folderName } = useParams();
-  const [files, setFiles] = useState([]);
+  console.log("hi");
+  const [datal, setData] = useState([]);
+  let files = [];
+  const { username } = useParams();
+  console.log("username: ", username);
+  const { folderName } = useParams();
+  console.log("folderName: ", folderName);
 
   useEffect(() => {
     const objOptions = {
@@ -14,23 +21,30 @@ const FilesPage = () => {
     };
 
     fetch(`http://localhost:3000/${username}/${folderName}`, objOptions)
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
-        console.log("Fetched files: ", data);
-        setFiles(data);
+        console.log("data: ", data);
+        files = data;
+        setData(data);
       });
-  }, [username, folderName]);
+  }, []);
 
+  function showf() {
+    let arr = [];
+    for (let i = 0; i < datal.length; i++) {
+      arr.push(<File name={datal[i]} />);
+    }
+    console.log("arr: ", arr);
+    return arr;
+  }
   return (
     <div>
-      <h2>
-        Files in {folderName} for {username}
-      </h2>
-      <ul>
-        {files.map((file, index) => (
-          <li key={index}>{file}</li>
-        ))}
-      </ul>
+      <h2>This is the files page</h2>
+      <h2>hi {username}</h2>
+      <br />
+      {showf()}
     </div>
   );
 };

@@ -4,7 +4,6 @@ import Folder from "../components/Folder";
 
 const FoldersPage = () => {
   const [datal, setData] = useState([]);
-  let folders = [];
   const { username } = useParams();
 
   useEffect(() => {
@@ -20,8 +19,6 @@ const FoldersPage = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("data: ", data);
-        folders = data;
         setData(data);
       });
   }, []);
@@ -29,7 +26,7 @@ const FoldersPage = () => {
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<Folder folderName={datal[i]} username={username} />);
+      arr.push(<Folder key={i} name={datal[i]} />);
     }
     return arr;
   }

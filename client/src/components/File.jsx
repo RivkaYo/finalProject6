@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteBtn from "./DeleteBtn";
 import RenameBtn from "./RenameBtn";
+import OpenFolderBtn from "./OpenFolderBtn";
 
 const File = (props) => {
   return (
@@ -16,6 +17,7 @@ const File = (props) => {
         {/* <h1>This is a folder</h1> */}
         <h2>{props.name}</h2>
         <br />
+        <OpenFolderBtn folderName={props.name} />
         <RenameBtn />
         <DeleteBtn />
       </div>
