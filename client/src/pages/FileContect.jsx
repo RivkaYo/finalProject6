@@ -12,6 +12,8 @@ const FileContect = () => {
       console.log('username: ', username);
       const { folderName } = useParams();
       console.log("folderName: ", folderName);
+      const { filename } = useParams();
+      console.log("folderName: ", folderName);
     
       useEffect(() => {
         const objOptions = {
@@ -23,7 +25,7 @@ const FileContect = () => {
     
         fetch(`http://localhost:3000/${username}/${folderName}/${filename}`, objOptions)
           .then((res) => {
-            return res.json();
+            return res.text();
           })
           .then((data) => {
             console.log("data: ", data);

@@ -34,8 +34,9 @@ console.log("hi");
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<files name={datal[i]} />);
+      arr.push(<File name={datal[i]} />);
     }
+    console.log('arr: ', arr);
     return arr;
   }
   return (

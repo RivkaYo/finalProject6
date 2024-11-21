@@ -9,6 +9,7 @@ import NoPage from "./pages/NoPage";
 import Folder from "./components/Folder";
 import FilesPage from "./pages/FilesPage";
 import File from "./components/File";
+import FileContect from "./pages/FileContect";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -25,13 +26,9 @@ function App() {
                 <LoginPage setUsername={setUsername} username={username} />
               }
             />
-            {/* <Route path=":folderName" element={<FilesPage />}></Route> */}
-            <Route path=":username" element={<FoldersPage />}>
-              <Route path=":folderName" element={<FilesPage />}>
-                {/* <Route path={`${fileId}`} element={<File />} /> */}
-                 <Route path=":filename" element={<FilesPage />}> </Route>
-              </Route>
-            </Route>
+            <Route path=":username" element={<FoldersPage />} /> 
+            <Route path=":username/:folderName" element={<FilesPage />} /> 
+            <Route path=":username/:folderName/:filename" element={<FileContect />} /> 
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
