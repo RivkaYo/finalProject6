@@ -9,7 +9,6 @@ const FilesPage = () => {
   const [datal, setData] = useState([]);
   let files = [];
   const { username } = useParams();
-  console.log("username: ", username);
   const { folderName } = useParams();
   console.log("folderName: ", folderName);
 
@@ -26,7 +25,6 @@ const FilesPage = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("data: ", data);
         files = data;
         setData(data);
       });

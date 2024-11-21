@@ -16,7 +16,7 @@ const AddFileBtn = ({ username, folderName }) => {
         folderName: folderName,
       }),
     };
-    fetch(`http://localhost:3000/filepage`, objOptions)
+    fetch(`http://localhost:3000/filespage`, objOptions)
       .then((res) => res.json())
       .then((data) => {
         console.log("Name success:", data);

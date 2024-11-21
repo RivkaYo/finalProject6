@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use(`/folderpage`, folderpageRouter);
-app.use("./filespage", filespageRouter);
+app.use("/filespage", filespageRouter);
 
 module.exports = app;

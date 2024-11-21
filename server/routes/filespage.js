@@ -3,7 +3,6 @@ const fs = require("fs");
 var router = express.Router();
 const path = require("path");
 
-/* GET users listing. */
 router.get("/", function (req, res) {
   res.send("respond with a resource. entered file page");
 });
@@ -11,7 +10,7 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
   const { username, fileName, folderName } = req.body;
 
-  if (!username || !fileName) {
+  if (!username || !fileName || !folderName) {
     return res.status(400).send("Username and file name are required");
   }
 
@@ -24,8 +23,9 @@ router.post("/", function (req, res) {
     folderName,
     fileName
   );
+  console.log("filePath: ", filePath);
   try {
-    fs.writeFileSync(filePath, "", "utf8");
+    fs.writeFileSync(filePath, "", { encoding: "utf8" });
     console.log("New file created successfully at", filePath);
     return res.status(201).send({ message: "File created successfully" });
   } catch (err) {
