@@ -2,15 +2,13 @@ import React from "react";
 import File from "../components/File";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import AddFileBtn from "../components/AddFileBtn";
+import AddFolderBtn from "../components/AddFolderBtn";
 
 const FilesPage = () => {
-  const [changename, setChangename] = useState(false)
-
-  console.log("hi");
   const [datal, setData] = useState([]);
   let files = [];
   const { username } = useParams();
-  console.log("username: ", username);
   const { folderName } = useParams();
   console.log("folderName: ", folderName);
 
@@ -27,16 +25,15 @@ const FilesPage = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("data: ", data);
         files = data;
         setData(data);
       });
-  }, [changename]);
+  }, []);
 
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<File key={i} name={datal[i]} changename={changename} setChangename={setChangename} username={username} />);
+      arr.push(<File key={i} name={datal[i]} />);
     }
     console.log("arr: ", arr);
     return arr;
@@ -47,6 +44,8 @@ const FilesPage = () => {
       <h2>hi {username}</h2>
       <br />
       {showf()}
+      <AddFolderBtn username={username} />
+      <AddFileBtn username={username} folderName={folderName} />
     </div>
   );
 };

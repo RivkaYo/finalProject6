@@ -3,7 +3,6 @@ import File from "../components/File";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-
 const FileContect = () => {
   const [isChengingContect, setisChengingContect] = useState(false);
   const [newContent, setNewContent] = useState("");

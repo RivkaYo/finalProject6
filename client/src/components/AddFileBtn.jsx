@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const AddFolderBtn = ({ username }) => {
-  const [newFolderName, setNewFolderName] = useState("");
+const AddFileBtn = ({ username, folderName }) => {
+  const [newfileName, setNewfileName] = useState("");
   const [isNaming, setIsNaming] = useState(false);
 
   function handleSubmitName() {
@@ -10,9 +10,13 @@ const AddFolderBtn = ({ username }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ folderName: newFolderName, username: username }),
+      body: JSON.stringify({
+        fileName: newfileName,
+        username: username,
+        folderName: folderName,
+      }),
     };
-    fetch(`http://localhost:3000/folderpage`, objOptions)
+    fetch(`http://localhost:3000/filespage`, objOptions)
       .then((res) => res.json())
       .then((data) => {
         console.log("Name success:", data);
@@ -30,19 +34,19 @@ const AddFolderBtn = ({ username }) => {
 
   return (
     <div>
-      <button onClick={handleEnterName}>Add Folder</button>
+      <button onClick={handleEnterName}>Add file</button>
       {isNaming && (
         <form>
           <input
-            placeholder="folder name"
+            placeholder="file name"
             type="text"
-            className="newnewFolderName"
-            value={newFolderName}
-            onChange={(e) => setNewFolderName(e.target.value)}
+            className="newnewfileName"
+            value={newfileName}
+            onChange={(e) => setNewfileName(e.target.value)}
           />
           <br></br>
           <button type="button" onClick={handleSubmitName}>
-            Submit folder Name
+            Submit file Name
           </button>
         </form>
       )}
@@ -50,4 +54,4 @@ const AddFolderBtn = ({ username }) => {
   );
 };
 
-export default AddFolderBtn;
+export default AddFileBtn;
