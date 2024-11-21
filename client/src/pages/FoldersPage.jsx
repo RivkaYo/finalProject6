@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Folder from "../components/Folder";
+import AddFolderBtn from "../components/AddFolderBtn";
 
 const FoldersPage = () => {
   const [datal, setData] = useState([]);
@@ -39,6 +40,7 @@ const FoldersPage = () => {
       <h2>hi {username}</h2>
       <br />
       {showf()}
+      <AddFolderBtn username={username} />
     </div>
   );
 };
