@@ -3,11 +3,11 @@ import DeleteBtn from "./DeleteBtn";
 import RenameBtn from "./RenameBtn";
 import OpenFolderBtn from "./OpenFolderBtn";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
-const Folder = ({ name }) => {
+const Folder = ({ name,setchanged,changed }) => {
 
   const { username } = useParams();
-
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ const Folder = ({ name }) => {
       <h2>{name}</h2>
       <br />
       <OpenFolderBtn username={username} folderName={name} />
-      <RenameBtn username={username} folderName={name} />
+      <RenameBtn username={username} folderName={name} setchanged={setchanged} changed={changed} />
       <DeleteBtn />
     </div>
   );

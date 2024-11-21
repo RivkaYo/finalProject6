@@ -4,7 +4,9 @@ import Folder from "../components/Folder";
 
 const FoldersPage = () => {
   const [datal, setData] = useState([]);
+  const [changed,setchanged]= useState(false);
   const { username } = useParams();
+
 
   useEffect(() => {
     const objOptions = {
@@ -21,12 +23,12 @@ const FoldersPage = () => {
       .then((data) => {
         setData(data);
       });
-  }, []);
+  }, [changed]);
 
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<Folder key={i} name={datal[i]} />);
+      arr.push(<Folder key={i} name={datal[i]} setchanged={setchanged} changed={changed} />);
     }
     return arr;
   }
