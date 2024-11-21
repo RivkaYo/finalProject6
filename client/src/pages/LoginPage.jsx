@@ -35,7 +35,7 @@ const LoginPage = ({ setUsername, username }) => {
         <label htmlFor="username">Username:</label>
         <br></br>
         <input
-          placeholder="tzofia"
+          placeholder=" "
           type="text"
           className="username"
           value={username}
@@ -48,7 +48,7 @@ const LoginPage = ({ setUsername, username }) => {
         <label htmlFor="password">PassWord:</label>
         <br></br>
         <input
-          placeholder="123456"
+          placeholder=" "
           type="text"
           className="password"
           value={password}
