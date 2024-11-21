@@ -2,9 +2,10 @@ import React from "react";
 import File from "../components/File";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import AddFileBtn from "../components/AddFileBtn";
+import AddFolderBtn from "../components/AddFolderBtn";
 
 const FilesPage = () => {
-  console.log("hi");
   const [datal, setData] = useState([]);
   let files = [];
   const { username } = useParams();
@@ -45,6 +46,8 @@ const FilesPage = () => {
       <h2>hi {username}</h2>
       <br />
       {showf()}
+      <AddFolderBtn username={username} />
+      <AddFileBtn username={username} folderName={folderName} />
     </div>
   );
 };

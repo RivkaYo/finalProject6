@@ -5,9 +5,8 @@ import AddFolderBtn from "../components/AddFolderBtn";
 
 const FoldersPage = () => {
   const [datal, setData] = useState([]);
-  const [changed,setchanged]= useState(false);
+  const [changed, setchanged] = useState(false);
   const { username } = useParams();
-
 
   useEffect(() => {
     const objOptions = {
@@ -29,7 +28,14 @@ const FoldersPage = () => {
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<Folder key={i} name={datal[i]} setchanged={setchanged} changed={changed} />);
+      arr.push(
+        <Folder
+          key={i}
+          name={datal[i]}
+          setchanged={setchanged}
+          changed={changed}
+        />
+      );
     }
     return arr;
   }

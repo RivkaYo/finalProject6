@@ -15,8 +15,6 @@ router.post("/", function (req, res) {
     return res.status(400).send("Username and folder name are required");
   }
 
-  // const folderPath = `../public/files/${username}/${folderName}`;
-
   const folderPath = path.join(
     __dirname,
     "..",
