@@ -179,6 +179,29 @@ router.put("/:username/:foldername/:filename", function (req, res) {
   }
 })
 
+//delete a file
+router.delete("/:username/:folderName", function (req, res) {
+  try {
+    const { username, folderName } = req.params; 
+    const { filename } = req.body;  
+    console.log('filename: ', filename);
+    if (!filename) {
+      return res.status(400).json({ message: "Filename is not valid" });
+    }
+    const filePath = path.join(__dirname, `../public/files/${username}/${folderName}/${filename}`);
+        fs.unlink(filePath, function (err) {
+      if (err) {
+        console.error("Error deleting file:", err);
+        return res.status(500).json({ message: "Error deleting file" });
+      }
+      console.log("File deleted successfully!");
+      res.status(200).json({ message: "File deleted successfully" });
+    });
+  } catch (err) {
+    console.error("Error deleting the file:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 
 module.exports = router;
