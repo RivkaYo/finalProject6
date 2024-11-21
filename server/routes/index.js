@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var fs = require("fs");
+const path = require('path');
+
 
 /* GET home page. */
 
@@ -43,6 +45,19 @@ router.post("/login", function (req, res) {
 
       // Save the updated user list back to the file
       allusers.users = arr;
+
+
+    
+      fs.mkdir(`./public/files/${req.body.username}/folder1`, { recursive: true }, (err) => {
+        if (err) {
+          return console.error('Error creating folder:', err);
+        }
+        console.log('New folder created successfully!');
+      });
+
+
+
+
       fs.writeFile(
         "./public/database/db.json",
         JSON.stringify(allusers),
@@ -73,32 +88,32 @@ router.get("/:username", function (req, res) {
   });
 });
 
-router.get("/:username/:foldername",function(req,res){
-  let username= req.params.username;
+router.get("/:username/:foldername", function (req, res) {
+  let username = req.params.username;
   console.log('username: ', username);
-  let foldername= req.params.foldername;
+  let foldername = req.params.foldername;
   console.log('foldername: ', foldername);
 
-  fs.readdir(`./public/files/${username}/${foldername}`,(error,data)=>{
-    if(error){
+  fs.readdir(`./public/files/${username}/${foldername}`, (error, data) => {
+    if (error) {
       console.log('error: ', error);
       throw error
-      }else res.send(data)
+    } else res.send(data)
   })
 })
 
-router.get("/:username/:foldername/:filename",function(req,res){
-  let username= req.params.username;
+router.get("/:username/:foldername/:filename", function (req, res) {
+  let username = req.params.username;
   console.log('username: ', username);
-  let foldername= req.params.foldername;
+  let foldername = req.params.foldername;
   console.log('foldername: ', foldername);
-  let filename= req.params.filename;
+  let filename = req.params.filename;
   console.log('filename: ', filename);
-  fs.readFile(`./public/files/${username}/${foldername}/${filename}`,(error,data)=>{
-    if(error){
+  fs.readFile(`./public/files/${username}/${foldername}/${filename}`, (error, data) => {
+    if (error) {
       console.log('error: ', error);
       throw error
-      }else res.send(data)
+    } else res.send(data)
   })
 })
 

@@ -9,6 +9,7 @@ const File = (props) => {
       {/* <h1>This is a folder</h1> */}
       <h2>{props.name}</h2>
       <br />
+      <OpenFolderBtn folderName={(props.name).txt} />
       <RenameBtn />
       <DeleteBtn />
     </div>

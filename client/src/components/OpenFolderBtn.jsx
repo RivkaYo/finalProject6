@@ -10,7 +10,7 @@ const OpenFolderBtn = ({ folderName }) => {
   }
   return (
     <div>
-      <button onClick={handleOpenFolder}>Open Folder</button>
+      <button onClick={handleOpenFolder}>Open Folder/File</button>
     </div>
   );
 };
