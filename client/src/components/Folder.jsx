@@ -2,8 +2,12 @@ import React from "react";
 import DeleteBtn from "./DeleteBtn";
 import RenameBtn from "./RenameBtn";
 import OpenFolderBtn from "./OpenFolderBtn";
+import { useParams } from "react-router-dom";
 
-const Folder = ({ folderName, username }) => {
+const Folder = ({ name }) => {
+
+  const { username } = useParams();
+
   return (
     <div
       style={{
@@ -13,10 +17,10 @@ const Folder = ({ folderName, username }) => {
         border: "2px,solid,black",
       }}
     >
-      <h2>{folderName}</h2>
+      <h2>{name}</h2>
       <br />
-      <OpenFolderBtn username={username} folderName={folderName} />
-      <RenameBtn username={username} folderName={folderName} />
+      <OpenFolderBtn username={username} folderName={name} />
+      <RenameBtn username={username} folderName={name} />
       <DeleteBtn />
     </div>
   );
