@@ -203,5 +203,29 @@ router.delete("/:username/:folderName", function (req, res) {
   }
 });
 
+//delete a folder
+// router.delete("/:username", function (req, res) {
+//   try {
+//     const { username } = req.params; 
+//     const { folderName } = req.body; 
+//     console.log('folderName: ', folderName);
+//     if (!folderName) {
+//       return res.status(400).json({ message: "Folder name is not valid" });
+//     }
+//     const folderPath = path.join(__dirname, `../public/files/${username}/${folderName}`);
+//     fs.rm(folderPath, { recursive: true, force: true }, (err) => {
+//       if (err) {
+//         console.error("Error deleting folder:", err);
+//         return res.status(500).json({ message: "Error deleting folder" });
+//       }
+//       console.log("Folder and all contents deleted successfully!");
+//       res.status(200).json({ message: "Folder and all contents deleted successfully" });
+//     });
+//   } catch (err) {
+//     console.error("Error deleting the folder:", err);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// });
+
 
 module.exports = router;
