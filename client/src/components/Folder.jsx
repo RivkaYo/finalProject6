@@ -3,7 +3,7 @@ import DeleteBtn from "./DeleteBtn";
 import RenameBtn from "./RenameBtn";
 import OpenFolderBtn from "./OpenFolderBtn";
 
-const Folder = (props) => {
+const Folder = ({ folderName, username }) => {
   return (
     <div
       style={{
@@ -13,10 +13,10 @@ const Folder = (props) => {
         border: "2px,solid,black",
       }}
     >
-      <h2>{props.name}</h2>
+      <h2>{folderName}</h2>
       <br />
-      <OpenFolderBtn folderName={props.name} />
-      <RenameBtn />
+      <OpenFolderBtn username={username} folderName={folderName} />
+      <RenameBtn username={username} folderName={folderName} />
       <DeleteBtn />
     </div>
   );

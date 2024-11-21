@@ -1,14 +1,11 @@
 import "./App.css";
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import FoldersPage from "./pages/FoldersPage";
 import LayoutPage from "./pages/LayoutPage";
 import NoPage from "./pages/NoPage";
-import Folder from "./components/Folder";
 import FilesPage from "./pages/FilesPage";
-import File from "./components/File";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -26,7 +23,10 @@ function App() {
               }
             />
             <Route path=":username" element={<FoldersPage />}>
-              <Route path=":folderName" element={<FilesPage />}>
+              <Route
+                path=":folderName"
+                element={<FilesPage username={username} />}
+              >
                 {/* <Route path={`${fileId}`} element={<File />} /> */}
               </Route>
             </Route>

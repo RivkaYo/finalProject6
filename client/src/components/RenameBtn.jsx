@@ -1,21 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
-const RenameBtn = () => {
-  function handleRename() {
-    alert("entered handle rename func");
+const RenameBtn = ({ folderName, username }) => {
+  const [newFolderName, setnewFolderName] = useState({ folderName });
+
+  function handleSubmitRename() {
     const objOptions = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      //   the following line invary wrong
-      body: JSON.stringify({ "path to the file name": "input.value" }),
+      body: JSON.stringify({ folderName: newFolderName }),
     };
-    // fetch("http://localhost:3000/folderpage", objOptions);
+    fetch(`http://localhost:3000/${username}/${folderName}`, objOptions);
+  }
+
+  function handleRename() {
+    alert("entered handle rename func");
     return (
-      <div>
-        <input>What should the new name be?</input>
-      </div>
+      <form>
+        <input
+          placeholder="new name"
+          type="text"
+          className="newnewFolderName"
+          value={newFolderName}
+          onChange={(e) => {
+            setnewFolderName(e.target.value);
+          }}
+        />
+        <br></br>
+        <button
+          onClick={(event) => {
+            handleSubmitRename(event);
+          }}
+        >
+          Submit change
+        </button>
+      </form>
     );
   }
   return (

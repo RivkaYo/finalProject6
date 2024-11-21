@@ -6,7 +6,6 @@ const FoldersPage = () => {
   const [datal, setData] = useState([]);
   let folders = [];
   const { username } = useParams();
-  console.log("username: ", username);
 
   useEffect(() => {
     const objOptions = {
@@ -30,7 +29,7 @@ const FoldersPage = () => {
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<Folder name={datal[i]} />);
+      arr.push(<Folder folderName={datal[i]} username={username} />);
     }
     return arr;
   }
