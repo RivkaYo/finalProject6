@@ -155,6 +155,30 @@ router.patch("/:username/:folderName/:filename", async function (req, res) {
   }
 });
 
+//change the contect of a file
+router.put("/:username/:foldername/:filename", function (req, res) {
+  try {
+    const { username, foldername, filename } = req.params; 
+    const newContent = req.body.newContent; 
+    if (!newContent) {
+      return res.status(400).json({ message: "Content is required" });
+    }
+    const filePath = path.join(__dirname, `../public/files/${username}/${foldername}/${filename}`);
+    console.log("File path: ", filePath);
+        fs.writeFile(filePath, newContent, function (err) {
+      if (err) {
+        console.error("Error writing file:", err);
+        return res.status(500).json({ message: "Error writing file" });
+      }
+      console.log("Content replaced!");
+      res.status(200).json({ message: "Content changed successfully" });
+    });
+  } catch (err) {
+    console.error("Error changing the file content:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+})
+
 
 
 module.exports = router;
