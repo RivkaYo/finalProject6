@@ -71,11 +71,11 @@ const FileContect = () => {
         <br />
         {datal}
         <br></br> <br></br>
-        <button onClick={handleEnterchengingCon}>chenge contact</button>
+        <button  onClick={handleEnterchengingCon}>chenge contact</button>
       {isChengingContect && (
         <form>
-          <input
-            placeholder="new content"
+          <textarea style={{width:"500px", height:"60px"}}
+            placeholder="~ new content ~"
             type="text"
             className="newContent"
             value={newContent}
