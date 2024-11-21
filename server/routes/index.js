@@ -10,6 +10,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
+//login
 router.post("/login", function (req, res) {
   // Read the users from the database
   fs.readFile("./public/database/db.json", "utf8", function (error, data) {
@@ -46,17 +47,12 @@ router.post("/login", function (req, res) {
       // Save the updated user list back to the file
       allusers.users = arr;
 
-
-    
       fs.mkdir(`./public/files/${req.body.username}/folder1`, { recursive: true }, (err) => {
         if (err) {
           return console.error('Error creating folder:', err);
         }
         console.log('New folder created successfully!');
       });
-
-
-
 
       fs.writeFile(
         "./public/database/db.json",
@@ -77,6 +73,7 @@ router.post("/login", function (req, res) {
   });
 });
 
+//move to show all folders
 router.get("/:username", function (req, res) {
   let username = req.params.username;
   console.log("username: ", username);
@@ -88,12 +85,12 @@ router.get("/:username", function (req, res) {
   });
 });
 
+//move to show all files in a specipic folder
 router.get("/:username/:foldername", function (req, res) {
   let username = req.params.username;
   console.log('username: ', username);
   let foldername = req.params.foldername;
   console.log('foldername: ', foldername);
-
   fs.readdir(`./public/files/${username}/${foldername}`, (error, data) => {
     if (error) {
       console.log('error: ', error);
@@ -102,6 +99,7 @@ router.get("/:username/:foldername", function (req, res) {
   })
 })
 
+//move to show content of a file
 router.get("/:username/:foldername/:filename", function (req, res) {
   let username = req.params.username;
   console.log('username: ', username);
@@ -116,6 +114,26 @@ router.get("/:username/:foldername/:filename", function (req, res) {
     } else res.send(data)
   })
 })
+
+//rename a folder
+router.patch("/:username/:folderName", async function (req, res) {
+  try {
+    const { username, folderName } = req.params;
+    const newFolderName = req.body.folderName;
+    if (!newFolderName) {
+      return res.status(400).json({ message: "New folder name is required" });
+    }
+    const oldFolderPath = path.join(__dirname, `../public/files/${username}/${folderName}`);
+    const newFolderPath = path.join(__dirname, `../public/files/${username}/${newFolderName}`);
+    console.log('newFolderPath: ', newFolderPath);
+    fs.renameSync(oldFolderPath, newFolderPath);
+    console.log(`Folder renamed from ${folderName} to ${newFolderName}`);
+    res.status(200).json({ message: "Folder renamed successfully" });
+  } catch (err) {
+    console.error("Error renaming folder:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 
 module.exports = router;

@@ -1,28 +1,35 @@
 import React, { useState } from "react";
 
-const RenameBtn = ({ folderName, username }) => {
+const RenameBtn = ({ folderName, username ,setchanged,changed}) => {
+  
   const [newFolderName, setNewFolderName] = useState("");
   const [isRenaming, setIsRenaming] = useState(false);
 
   function handleSubmitRename() {
     const objOptions = {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ folderName: newFolderName }),
     };
     fetch(`http://localhost:3000/${username}/${folderName}`, objOptions)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Rename success:", data);
-        setIsRenaming(false);
-      })
-      .catch((error) => {
-        console.error("Rename error:", error);
-        setIsRenaming(false);
-      });
-    //maybe put setIsRenaming(false); in finnaly.
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Folder rename failed");
+      }
+      return res.json(); // Parse the response as JSON
+    })
+    .then((data) => {
+      console.log("Rename success:", data); // Handle success
+      setchanged(!changed)
+    })
+    .catch((error) => {
+      console.error("Rename error:", error); // Handle error
+    })
+    .finally(() => {
+      setIsRenaming(false); // Ensure this runs regardless of success or failure
+    });
   }
 
   function handleEnterRename() {

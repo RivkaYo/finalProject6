@@ -34,7 +34,7 @@ const FilesPage = () => {
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<File name={datal[i]} />);
+      arr.push(<File key={i} name={datal[i]} />);
     }
     console.log("arr: ", arr);
     return arr;
