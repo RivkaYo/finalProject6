@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const FilesPage = () => {
+  const [changename, setChangename] = useState(false)
+
   console.log("hi");
   const [datal, setData] = useState([]);
   let files = [];
@@ -29,12 +31,12 @@ const FilesPage = () => {
         files = data;
         setData(data);
       });
-  }, []);
+  }, [changename]);
 
   function showf() {
     let arr = [];
     for (let i = 0; i < datal.length; i++) {
-      arr.push(<File key={i} name={datal[i]} />);
+      arr.push(<File key={i} name={datal[i]} changename={changename} setChangename={setChangename} username={username} />);
     }
     console.log("arr: ", arr);
     return arr;
