@@ -5,10 +5,6 @@ const AddFolderBtn = ({ username }) => {
   const [isNaming, setIsNaming] = useState(false);
 
   function handleSubmitName() {
-    {
-      console.log("username: ", username);
-      console.log("folderName: ", newFolderName);
-    }
     const objOptions = {
       method: "POST",
       headers: {

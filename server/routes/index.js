@@ -135,5 +135,26 @@ router.patch("/:username/:folderName", async function (req, res) {
   }
 });
 
+//rename file
+router.patch("/:username/:folderName/:filename", async function (req, res) {
+  try {
+    const { username, folderName ,filename} = req.params;
+    const newFolderName = req.body.folderName;
+    if (!newFolderName) {
+      return res.status(400).json({ message: "New folder name is required" });
+    }
+    const oldFolderPath = path.join(__dirname, `../public/files/${username}/${folderName}/${filename}`);
+    const newFolderPath = path.join(__dirname, `../public/files/${username}/${folderName}/${newFolderName}`);
+    console.log('newFolderPath: ', newFolderPath);
+    fs.renameSync(oldFolderPath, newFolderPath);
+    console.log(`file renamed from ${filename} to ${newFolderName}`);
+    res.status(200).json({ message: "file renamed successfully" });
+  } catch (err) {
+    console.error("Error renaming file:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 
 module.exports = router;
