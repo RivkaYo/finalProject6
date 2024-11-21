@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const RenameBtn = ({ folderName, username }) => {
-  const [newFolderName, setnewFolderName] = useState({ folderName });
+  const [newFolderName, setNewFolderName] = useState("");
+  const [isRenaming, setIsRenaming] = useState(false);
 
   function handleSubmitRename() {
     const objOptions = {
@@ -11,36 +12,41 @@ const RenameBtn = ({ folderName, username }) => {
       },
       body: JSON.stringify({ folderName: newFolderName }),
     };
-    fetch(`http://localhost:3000/${username}/${folderName}`, objOptions);
+    fetch(`http://localhost:3000/${username}/${folderName}`, objOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Rename success:", data);
+        setIsRenaming(false);
+      })
+      .catch((error) => {
+        console.error("Rename error:", error);
+        setIsRenaming(false);
+      });
+    //maybe put setIsRenaming(false); in finnaly.
   }
 
-  function handleRename() {
-    alert("entered handle rename func");
-    return (
-      <form>
-        <input
-          placeholder="new name"
-          type="text"
-          className="newnewFolderName"
-          value={newFolderName}
-          onChange={(e) => {
-            setnewFolderName(e.target.value);
-          }}
-        />
-        <br></br>
-        <button
-          onClick={(event) => {
-            handleSubmitRename(event);
-          }}
-        >
-          Submit change
-        </button>
-      </form>
-    );
+  function handleEnterRename() {
+    setIsRenaming(true);
   }
+
   return (
     <div>
-      <button onClick={handleRename}>Rename</button>
+      <button onClick={handleEnterRename}>Rename</button>
+      {isRenaming && (
+        <form>
+          <input
+            placeholder="new name"
+            type="text"
+            className="newnewFolderName"
+            value={newFolderName}
+            onChange={(e) => setNewFolderName(e.target.value)}
+          />
+          <br></br>
+          <button type="button" onClick={handleSubmitRename}>
+            Submit change
+          </button>
+        </form>
+      )}
     </div>
   );
 };
